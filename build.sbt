@@ -42,7 +42,3 @@ releaseProcess := Seq[ReleaseStep](
   commitNextVersion,
   pushChanges
 )
-
-Universal / javaOptions ++= Seq(
-  "-Dpidfile.path=/dev/null"
-)
