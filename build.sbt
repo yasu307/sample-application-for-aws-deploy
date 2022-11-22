@@ -15,7 +15,7 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0
 // play.sbt.routes.RoutesKeys.routesImport += "com.example.binders._"
 
 enablePlugins(DockerPlugin)
-Docker / maintainer := "yusuke307.ac@gmail.com"
+Docker / maintainer := "xxxxxxxxxxxx@gmail.com"
 dockerBaseImage := "amazoncorretto:8"
 Docker / dockerExposedPorts := Seq(9000, 9000)
 Docker / daemonUser := "daemon"
