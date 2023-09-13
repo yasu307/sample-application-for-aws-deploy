@@ -3,6 +3,7 @@ package controllers
 import javax.inject._
 import play.api._
 import play.api.mvc._
+import scala.util.Try
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -11,14 +12,19 @@ import play.api.mvc._
 @Singleton
 class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
 
-  /**
-   * Create an Action to render an HTML page.
-   *
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
-   */
+  val logger: Logger = Logger(this.getClass())
+
+  def ping() = Action { implicit request: Request[AnyContent] =>
+    Ok
+  }
+
   def index() = Action { implicit request: Request[AnyContent] =>
+    logger.info("Access to index")
+    Ok(views.html.index())
+  }
+
+  def error() = Action { implicit request: Request[AnyContent] =>
+    Try("hoge".toInt).recover(e => logger.error("parceInt error", e))
     Ok(views.html.index())
   }
 }
